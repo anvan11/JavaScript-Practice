@@ -2,6 +2,7 @@
 var status = 0;
 var time=0;
 
+console.log(typeof status);
 document.getElementById("output").innerHTML = "0:0:0:0";
 console.log("hi");
 function startPause(){
