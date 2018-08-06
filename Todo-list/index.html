@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Todo Lists</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<h1>TODO LISTS</h1>
+		<h3>
+			<ul>
+				<li>Type the input and click SUBMIT button the todo list. It will show on the unfinished lists</li>
+				<li>If the user finishes any task on the unfinished Lists. Just click on the task. It will disappear on the unfinished lists and will be showed on the finished lists</li>
+			</ul>
+		</h3>
+		<input type="text" id="todo-list" />
+		<button id="submit" onclick="pushTask()">SUBMIT</button>
+		<br />
+		
+		<div id="list1">
+			<p>Unfinished Lists:</p>
+			<ol id="unfinished-list"></ol>
+		</div>
+
+		<div id="list2">
+			<p>Finished Lists</p>
+			<ol id="finished-list"></ol>
+			<script src="js/main.js"></script>
+	</body>
+</html>
