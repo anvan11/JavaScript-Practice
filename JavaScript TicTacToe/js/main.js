@@ -33,6 +33,7 @@ function nextMove(cell){
 				begin = 0;
 			}else if(checkTie()){
 				alert('It\'s a tie game!!!');
+				begin = 0;
 			}else{
 			switchTurn();
 			}
@@ -81,12 +82,3 @@ function checkThreeCells(a,b,c,turn){
 	}
 
 }
-
-
-// document.addEventListener('DOMContentLoaded', function(){
-// 	if (document.getElementById('c1').textContent != ''){
-// 		console.log('nice');
-// 	}else{
-// 		console.log('not nice');
-// 	}
-// });
