@@ -1,53 +1,62 @@
 
 var begin = 0;
+var turn ;
+var listCells = document.getElementsByClassName('cell');
 
 document.addEventListener('DOMContentLoaded', function(){
 	console.log('Dom got loaded');
-	document.getElementById('play').addEventListener('click', start);
+	document.getElementById('play').addEventListener('click', start);	
 });
+
 
 function start(){
 	begin = 1;
-	document.turn = 'X';
+	turn = 'X';
 	for(var i = 0; i<9; i++){
 		document.getElementById('c' + i).textContent = '';
 		document.getElementById('c' + i).style.backgroundColor = 'yellow';
 	}
 	document.getElementById('play').textContent = 'Reset';
 	console.log('let\'s play');
+
+	for(var i = 0; i < 9; i++){
+		listCells[i] = listCells[i].addEventListener('click', nextMove);
+	}
+
 }
 
 
-function nextMove(cell){
+function nextMove(){
 	if (begin === 1){
-		if (cell.textContent == ''){
-			cell.textContent = document.turn;
-			if(document.turn == 'X'){
-				cell.style.backgroundColor = 'red';
+
+		if (this.textContent == ''){
+			this.textContent = turn;
+			if(turn == 'X'){
+				this.style.backgroundColor = 'red';
 			}else{
-				cell.style.backgroundColor = 'green';
+				this.style.backgroundColor = 'green';
 			}
 
-			if (checkWin(document.turn)){
-				alert(document.turn + ' win! Congratulations!!!');
+			if (checkWin(turn)){
+				document.getElementById("message").textContent = turn + " win. Congrats!";
 				begin = 0;
 			}else if(checkTie()){
-				alert('It\'s a tie game!!!');
+				document.getElementById("message").textContent = "It's a tie game!!!";
 				begin = 0;
 			}else{
 			switchTurn();
 			}
 		}else{
-			alert('This cell is already placed!');
+			document.getElementById("message").textContent = "this cell is already placed!";
 		}
 	}
 }
 
 function switchTurn(){
-	if (document.turn === 'X'){
-		document.turn = 'O';
+	if (turn === 'X'){
+		turn = 'O';
 	}else{
-		document.turn = 'X';
+		turn = 'X';
 	}
 }
 
@@ -61,6 +70,7 @@ function checkWin(turn){
 	}else{
 		return false;
 	}
+	
 }
 
 function checkTie(){
@@ -73,12 +83,11 @@ function checkTie(){
 }
 
 function checkThreeCells(a,b,c,turn){
-	if (document.getElementById('c' +a).textContent === turn &&
-		document.getElementById('c' +b).textContent === turn &&
-		document.getElementById('c' +c).textContent === turn) {
+	if ( listCells[a].textContent === turn &&
+		 listCells[b].textContent === turn &&
+		 listCells[c].textContent === turn ) {
 		return true;
-	} else {
+	} 
 		return false;
-	}
-
 }
+
